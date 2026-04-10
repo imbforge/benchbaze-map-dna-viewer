@@ -89,7 +89,7 @@ function App() {
   const fileName = params.get("file_name");
   const title = params.get("title");
   const showOligos = params.get("show_oligos") ? true : false;
-  const fileFormat = params.get("file_format");
+  const fileFormat = fileName ? fileName.split(".").pop().toLowerCase() : null;
 
   const [loading, setLoading] = React.useState(true);
   const [loadError, setLoadError] = React.useState(null);
@@ -168,7 +168,6 @@ function App() {
     // This keeps lazy loading benefits while reducing wait time before first render.
     void oveModulePromise;
 
-    //useEffect doesn't like top level async functions so we define one inline and immediately invoke it
     (async () => {
       try {
         // Get plasmid data and editor module in parallel to reduce startup latency.

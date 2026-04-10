@@ -1,5 +1,3 @@
-import React from "react";
-import { Menu, MenuItem } from "@blueprintjs/core";
 import { svgStylePropsToExport } from "./styleProperties";
 
 const SUPPORTED_FILE_FORMATS_BINARY = ["dna"];
@@ -335,40 +333,6 @@ export function downloadMapPreview(title) {
   }
 
   window.toastr?.error("Map view not found");
-}
-
-export function DownloadMapFileDropdown(props) {
-  // Single-action dropdown for downloading original map file
-  const { sequenceData, toggleDropdown, title, fileName } = props;
-
-  return (
-    <Menu>
-      <MenuItem
-        text="Download Map File"
-        onClick={() => {
-          downloadMapFile(fileName, title || sequenceData?.name);
-          toggleDropdown({ forceClose: true });
-        }}
-      />
-    </Menu>
-  );
-}
-
-export function DownloadMapPreviewDropdown(props) {
-  // Single-action dropdown for downloading currently active view preview
-  const { sequenceData, toggleDropdown, title } = props;
-
-  return (
-    <Menu>
-      <MenuItem
-        text="Download Map Preview"
-        onClick={() => {
-          downloadMapPreview(title || sequenceData?.name);
-          toggleDropdown({ forceClose: true });
-        }}
-      />
-    </Menu>
-  );
 }
 
 export async function convertPlasmiMapToOveJson(fileName, fileFormat) {
